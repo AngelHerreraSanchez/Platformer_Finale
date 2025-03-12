@@ -161,7 +161,7 @@ public class HelpMethods {
     }
 
     public static ArrayList<Crabby> GetCrabs(BufferedImage img) {
-        List<Crabby> list = new ArrayList<>();
+        ArrayList<Crabby> list = new ArrayList<>();
         for(int j = 0; j < img.getHeight(); j++)
             for(int i = 0; i < img.getWidth(); i++)
                 Color color = new Color(img.getRGB(i, j));
@@ -210,18 +210,29 @@ public class HelpMethods {
     }
 
     public static ArrayList<Spike> GetSpikes(BufferedImage img) {
+        ArrayList<Spike> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getHeight(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == SPIKE)
+                    list.add(new Spike(i * Game.TILES_SIZE, j * Game.TILES_SIZE, SPIKE));
+            }
 
-        // TODO: create an ArrayList of Spike named list and instantiate to a new ArrayList<>()
-        // TODO: for int j starting at 0 ending before img.getHeight() adding 1 each time then
-        // TODO: for int i starting at 0 ending before img.getWidth() adding 1 each time then
-        // TODO: create a Color named color and get from new Color(img.getRGB(i, j));
-        // TODO: create an int named value and get from color.getBlue();
-        // TODO: if (value == SPIKE) then
-        // TODO: call list.add passing in a new Spike(i * Game.TILES_SIZE, j * Game.TILES_SIZE, SPIKE));
-        // TODO: end of both for loops
+      return list;
     }
 
     public static ArrayList<Cannon> GetCannons(BufferedImage img) {
+        ArrayList<Cannon> list = new ArrayList<>();
+        for (int j = 0; j < img.getHeight(); j++)
+            for (int i = 0; i < img.getHeight(); i++) {
+                Color color = new Color(img.getRGB(i, j));
+                int value = color.getBlue();
+                if (value == CANNON_LEFT || value == CANNON_RIGHT)
+                    list.add(new Cannon(i * Game.TILES_SIZE, j * Game.TILES_SIZE, value));
+            }
+
+        return list;
         // TODO: create an ArrayList of Cannon named list and instantiate to a new ArrayList<>()
         // TODO: for int j starting at 0 ending before img.getHeight() adding 1 each time then
         // TODO: for int i starting at 0 ending before img.getWidth() adding 1 each time then
