@@ -1,7 +1,5 @@
 package utilz;
 
-import main.Game;
-
 public class Constants {
 
 	public static final float GRAVITY = 0.04f * Game.SCALE;
@@ -14,6 +12,16 @@ public class Constants {
 		public static final int CANNON_BALL_WIDTH = (int)(Game.SCALE * CANNON_BALL_DEFAULT_WIDTH);
 		public static final int CANNON_BALL_HEIGHT = (int)(Game.SCALE * CANNON_BALL_DEFAULT_HEIGHT);
 		public static final float SPEED = 0.75f * Game.SCALE;
+	}
+
+	public static class Game{
+		public final static int TILES_DEFAULT_SIZE = 32;
+		public final static float SCALE = 2f;
+		public final static int TILES_IN_WIDTH = 26;
+		public final static int TILES_IN_HEIGHT = 14;
+		public final static int TILES_SIZE = (int) (TILES_DEFAULT_SIZE * SCALE);
+		public final static int GAME_WIDTH = TILES_SIZE * TILES_IN_WIDTH;
+		public final static int GAME_HEIGHT = TILES_SIZE * TILES_IN_HEIGHT;
 	}
 
 	public static class ObjectConstants {
