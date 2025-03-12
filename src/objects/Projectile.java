@@ -1,6 +1,11 @@
 package objects;
 
+import utilz.Constants;
+
 import java.awt.geom.Rectangle2D;
+
+import static utilz.Constants.Projectiles.CANNON_BALL_HEIGHT;
+import static utilz.Constants.Projectiles.CANNON_BALL_WIDTH;
 
 public class Projectile {
     private Rectangle2D.Float hitbox;
@@ -9,35 +14,36 @@ public class Projectile {
 
 
     public Projectile(int x, int y, int dir) {
-        // TODO: make an int called xOffset and set to to (int) (-3 * Game.SCALE)
-        // TODO: make an int called yOffset and set to (int) (5 * Game.SCALE)
+        int xOffset = (int) (-3 * Constants.Game.SCALE);
+        int yOffset = (int) (5 * Constants.Game.SCALE);
 
-        // if dir is 0
-        // TODO: set xOffset to (int)  (29 * Game.SCALE)
-        // end of if block
+        if (dir = 0){
+            xOffset = (int)  (29 * Game.SCALE);
+        }
 
-        // TODO: set hitbox to new Rectangle2D.Float() passing in
-        // x + xOffset, y + yOffset, CANNON_BALL_WIDTH, CANNON_BALL_HEIGHT
-        // TODO: set this.dir to dir
+        hitbox = new Rectangle2D.Float(x + xOffset, y + yOffset, CANNON_BALL_WIDTH, CANNON_BALL_HEIGHT);
+        this.dir = dir;
+
     }
 
     public void updatePos(){
-        // TODO: add dir * SPEED to hitbox.x
+        hitbox.x + dir * SPEED;
     }
 
     public void setPos(int x, int y){
-        // TODO: do what this setter method should do
+        this.x = x;
+        this.y = y;
     }
 
     public Rectangle2D.Float getHitbox() {
-        // TODO: return the hitbox
+        return hitbox;
     }
 
     public void setActive(boolean active){
-        // TODO: do what you think this should do
+        this.active = active;
     }
 
     public boolean isActive(){
-        // TODO: active
+        return active;
     }
 }

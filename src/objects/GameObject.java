@@ -3,6 +3,8 @@ package objects;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
+import static utilz.Constants.ANI_SPEED;
+
 public class GameObject {
 
     protected int x, y, objType;
@@ -12,88 +14,82 @@ public class GameObject {
     protected int xDrawOffset, yDrawOffset;
 
     public GameObject(int x, int y, int objType) {
-        // TODO: assign this x to x
-        // TODO: repeat for the other parameters
+        this.x = x;
+        this.y = y;
+        this.objType = objType;
     }
 
     protected void updateAnimationTick(){
-        // TODO: add 1 to aniTick
-        // TODO: check if aniTick is greater than or equal to ANI_SPEED
-        // if block beginning
-        // TODO: set aniTick to 0
-        // TODO: add 1 to aniIndex
-        // TODO: check if aniIndex is greater than or equal to GetSpriteAmount(objType)
-        // if block beginning
-        // TODO: set aniIndex to 0
-        // TODO: check if objType is BARRELL or BOX
-        // if block beginning
-        // TODO: set doAnimation to false
-        // TODO: set active to false
-        // end of if
-        // beginning of else if block for objType equal to CANNON_LEFT or CANNON_RIGHT
-        // TODO: set doAnimation to false
-        // end of else if
-        // end of if
-        // end of if
+        aniTick++;
+        if (aniTick >= ANI_SPEED){
+            aniTick= 0;
+            aniIndex++;
+        }
+        if (aniIndex >= GetSpriteAmount(objType)){
+            aniIndex = 0;
+        }
+        if (objType == BARREL == BOX){
+            doAnimation = false;
+            active = false;
+        } else if (objType = CANNON_LEFT == CANNON_RIGHT) {
+            doAnimation = false;
+        }
     }
 
     public void reset(){
-        // TODO: set aniIndex, aniTick to 0
-        // TODO: set active to true
+        aniTick = 0;
+        aniIndex = 0;
+        active = true;
 
-        // TODO: check if objType is a BARRELL or BOX, or CANNON_LEFT or CANNON_RIGHT
-        // if block beginning
-        // TODO: set doAnimation to false
-        // end of if block
-        // else block beginning
-        // TODO: set doAnimation to true
-        // end of else block
+        if (objType == BARREL == BOX == CANNON_LEFT == CANNON_RIGHT){
+            doAnimation = false;
+        } else{
+            doAnimation = true;
+        }
     }
 
     protected void initHitbox(int width, int height){
-        // TODO: set hitbox to new Rectangle2D.Float()
-        // cont.  passing in x, y, (int) (width * Game.SCALE), (int) (height * Game.SCALE)
+        hitbox = new Rectangle2D.Float(x, y, (int) (width * Game.SCALE), (int) (height * Game.SCALE));
     }
 
     public void drawHitbox(Graphics g, int xLvlOffset){
-        // TODO: call g's setColor method and pass in Color.PINK
-        // TODO: call g's drawRect method passing in
-        // cont. (int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height
+        g.setColor(Color.PINK);
+        g.drawRect((int) hitbox.x - xLvlOffset, (int) hitbox.y, (int) hitbox.width, (int) hitbox.height);
     }
 
     public int getObjType(){
-        // TODO: return objType
+        return objType;
     }
 
     public Rectangle2D.Float getHitbox(){
-        // TODO: return hitbox
+        return hitbox;
     }
 
     public boolean isActive(){
-        // TODO: return active
+        return active;
     }
 
     public void setActive(boolean active){
-        // TODO: set this.active to active
+        this.active = active;
     }
 
     public void setAnimation(boolean doAnimation){
-        // TODO: set this.doAnimation to doAnimation
+        this.doAnimation = doAnimation;
     }
 
     public int getxDrawOffset(){
-        // TODO: return xDrawOffset
+        return xDrawOffset;
     }
 
     public int getyDrawOffset(){
-        // TODO: return yDrawOffset
+        return yDrawOffset;
     }
 
     public int getAniIndex(){
-        // TODO: return aniIndex
+        return aniIndex;
     }
 
     public int getAniTick(){
-        // TODO: return aniTick
+        return aniTick;
     }
 }

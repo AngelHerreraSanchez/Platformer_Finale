@@ -233,14 +233,7 @@ public class HelpMethods {
             }
 
         return list;
-        // TODO: create an ArrayList of Cannon named list and instantiate to a new ArrayList<>()
-        // TODO: for int j starting at 0 ending before img.getHeight() adding 1 each time then
-        // TODO: for int i starting at 0 ending before img.getWidth() adding 1 each time then
-        // TODO: create a Color named color and get from new Color(img.getRGB(i, j));
-        // TODO: create an int named value and get from color.getBlue();
-        // TODO: if (value == CANNON_LEFT || value == CANNON_RIGHT) then
-        // TODO: call list.add passing in a new Cannon(i * Game.TILES_SIZE, j * Game.TILES_SIZE, value));
-        // TODO: end of both for loops
+
     }
 
 }
